@@ -1,8 +1,5 @@
-import React from "react";
-
 const Footer = () => {
   return (
-    //
     <div className="table-footer-group bg-gray-200">
       <div className="flex flex-col items-center">
         <div className="flex flex-row m-5 gap-4">

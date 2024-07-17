@@ -1,4 +1,4 @@
-import { DetailMovie, Movie, ResponseMovie } from "./type";
+import { DetailMovie, ResponseMovie } from "./type";
 
 import { API } from ".";
 

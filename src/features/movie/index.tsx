@@ -1,11 +1,10 @@
-import type { Movie, ResponseMovie } from "../../services/movie/type";
-import { getMovieId, getNowPlaying } from "../../services/movie";
-import { useEffect, useState } from "react";
-
+import type { Movie } from "../../services/movie/type";
 import MovieCard from "../../component/movie-card";
 import { UseMovieList } from "./hooks/useMovieList";
+import { getMovieId } from "../../services/movie";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery";
+import { useState } from "react";
 
 const Movies = () => {
   const navigate = useNavigate();

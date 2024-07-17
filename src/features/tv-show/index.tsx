@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { getTvShow } from "../../services/tv-show";
 import type { TvShow, TvShowResponse } from "../../services/tv-show/type";

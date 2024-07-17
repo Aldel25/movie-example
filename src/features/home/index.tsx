@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { Trending, TrendingResponse } from "../../services/trending/type";
+import { useEffect, useState } from "react";
 
 import TvShowCard from "../../component/tvshow-card";
 import { getTrending } from "../../services/trending";

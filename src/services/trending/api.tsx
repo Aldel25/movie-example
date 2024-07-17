@@ -1,5 +1,5 @@
 import { API } from ".";
-import { TrendingResponse } from "./style";
+import { TrendingResponse } from "./type";
 
 const getTrending = async () => {
   try {

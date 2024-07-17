@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   name: String;
   poster_path: String;
