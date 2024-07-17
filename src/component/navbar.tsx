@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="flex flex-row gap-5">
         <Link to={"/"}>Home</Link>
         <Link to={"/movie"}>Movie</Link>
-        <Link to={"/tv-show"}>TV Show</Link>
+        <Link to={"/tvshow"}>TV Show</Link>
         <div onClick={handleLogout}>Logout</div>
       </div>
     </div>
