@@ -1,54 +1,39 @@
 import type { Movie, ResponseMovie } from "../../services/movie/type";
+import { getMovieId, getNowPlaying } from "../../services/movie";
 import { useEffect, useState } from "react";
 
 import MovieCard from "../../component/movie-card";
-import { getNowPlaying } from "../../services/movie";
+import { UseMovieList } from "./hooks/useMovieList";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery";
 
 const Movies = () => {
   const navigate = useNavigate();
+
+  const { loading, nowPlayingData } = UseMovieList();
+
   const query = useQuery();
-  const page = (query.get("page") !== null ? query.get("page") : 1) as String;
+  const page = (query.get("page") !== null ? query.get("page") : 1) as string;
 
-  const [loading, setLoading] = useState(false);
-  const [nowPlayingData, setNowPlayingData] = useState<ResponseMovie>();
-
-  // const query = useQuery();
-  // const page = (query.get("page") !== null ? query.get("page") : 1) as String;
-
-  useEffect(() => {
-    fetchMovies();
-  }, []);
-
-  const fetchMovies = async () => {
-    try {
-      setLoading(true);
-      const response = await getNowPlaying(page as string);
-
-      setNowPlayingData(response);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const [selectedMovie, setSelectedMovie] = useState<Movie>();
 
   const nextPage = () => {
-    // setPage((prev) => prev + 1);
     const numPage = Number(page);
     navigate(`?page=${numPage + 1}`);
   };
 
   const backPage = () => {
     const numPage = Number(page);
-    navigate(`?page=${numPage - 1}`);
+    if (numPage > 1) {
+      navigate(`?page=${numPage - 1}`);
+    }
   };
 
   const toDetailMovie = async (id: number) => {
     try {
-      // const response = await getMovieDetails(id.toString());
-      // setSelectedMovie(response);
-      navigate(`/detail/${id}`); // Navigasi ke halaman detail dengan ID
+      const response = await getMovieId(id.toString());
+      setSelectedMovie(response);
+      navigate(`/detail/${id}`);
     } catch (error) {
       console.error(error);
     }
@@ -85,6 +70,19 @@ const Movies = () => {
           Next
         </button>
       </div>
+
+      {selectedMovie && (
+        <div className="p-5 border rounded mt-5">
+          <img
+            src={`https://image.tmdb.org/t/p/original/${selectedMovie.poster_path}`}
+            alt={selectedMovie.title}
+          />
+          <p>{selectedMovie.release_date}</p>
+          <p>{selectedMovie.vote_average}</p>
+          <p>{selectedMovie.popularity}</p>
+          <p>{selectedMovie.overview}</p>
+        </div>
+      )}
     </div>
   );
 };

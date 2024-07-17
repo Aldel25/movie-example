@@ -5,7 +5,7 @@ const ProtectedRoutes = () => {
 
   const token = localStorage.getItem("token");
 
-  const tokenProtected = ["/", "/movie", "/tvshow", "/details/:id"];
+  const tokenProtected = ["/", "/movies", "/tv-shows", "/trending"];
   const publicProtected = ["/login"];
 
   if (tokenProtected.includes(pathname)) {

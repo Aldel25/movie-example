@@ -1,7 +1,7 @@
 type AuthPayload = {
-    username : string
-    password : string
-}
+    username: string
+    password: string
+};
 
 type AuthResponse = {
     id: number
@@ -13,6 +13,6 @@ type AuthResponse = {
     image: string
     token: string
     refreshToken: string
-  }
+};
 
-  export type {AuthResponse, AuthPayload}
+export type { AuthPayload, AuthResponse }

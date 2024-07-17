@@ -1,3 +1,1 @@
-import { postLogin } from "./api";
-
-export { postLogin };
+export { postLogin } from './api'
